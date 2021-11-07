@@ -7,6 +7,15 @@ I expect that parts of this library may become obsolete or less ideal over time.
 2) Updates the library to better match conventions established by the new go version
 3) Updates the library to use any new stdlib additions or language features
 
+## How to use this
+
+Currently, since go 1.18 has not been released, the best way to try it out is to use `gotip`, which will manage donwloading the latest (unreleased) version of `go`, and works as a CLI replacement for the `go` command.
+
+```bash
+go install golang.org/dl/gotip@latest
+gotip download
+gotip test ./...
+```
 
 ## Data strucures
 

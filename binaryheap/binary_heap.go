@@ -22,7 +22,6 @@ func (b *BinaryHeap[T]) Len() int {
 func (b *BinaryHeap[T]) Push(val T) {
 	b.data.Push(val)
 	b.siftUp(0, b.data.Len() - 1)
-	fmt.Printf("b.data: %#v\n", b.data)
 }
 
 func (b *BinaryHeap[T]) Pop() *T {

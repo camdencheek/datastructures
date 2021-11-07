@@ -15,6 +15,12 @@ func (c *Cursor[T]) Current() *T {
 	return &c.current.val
 }
 
+func (c *Cursor[T]) SetCurrent(val T) {
+	if c.current != nil {
+		c.current.val = val
+	}
+}
+
 func (c *Cursor[T]) Index() *int {
 	if c.current == nil {
 		return nil

@@ -1,9 +1,8 @@
 package binaryheap
 
 import (
-	"fmt"
 	"github.com/camdencheek/datastructures/compare"
-	"github.com/camdencheek/datastructures/vector"
+	"github.com/camdencheek/datastructures/vec"
 )
 
 type BinaryHeap[T any] struct {

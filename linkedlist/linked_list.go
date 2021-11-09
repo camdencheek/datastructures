@@ -146,7 +146,7 @@ func (ll *LinkedList[T]) CursorHead() *Cursor[T] {
 	return &Cursor[T]{ll: ll, current: ll.head}
 }
 
-// CursorHead returns a cursor pointing to the last node in the linked list.
+// CursorTail returns a cursor pointing to the last node in the linked list.
 // If the list is empty, the cursor will point to the "ghost" node.
 func (ll *LinkedList[T]) CursorTail() *Cursor[T] {
 	return &Cursor[T]{ll: ll, current: ll.tail}

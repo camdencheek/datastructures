@@ -57,6 +57,46 @@ func TestLinkedList(t *testing.T) {
 		})
 	})
 
+	t.Run("Pop", func(t *testing.T) {
+		t.Run("empty", func(t *testing.T) {
+			ll := NewLinkedList[int]()
+			require.Nil(t, ll.Pop())
+		})
+
+		t.Run("one element", func(t *testing.T) {
+			ll := NewLinkedList(1)
+			require.Equal(t, 1, *ll.Pop())
+			require.Nil(t, ll.Pop())
+		})
+
+		t.Run("multiple elements", func(t *testing.T) {
+			ll := NewLinkedList(1, 2)
+			require.Equal(t, 2, *ll.Pop())
+			require.Equal(t, 1, *ll.Pop())
+			require.Nil(t, ll.Pop())
+		})
+	})
+
+	t.Run("PopHead", func(t *testing.T) {
+		t.Run("empty", func(t *testing.T) {
+			ll := NewLinkedList[int]()
+			require.Nil(t, ll.PopHead())
+		})
+
+		t.Run("one element", func(t *testing.T) {
+			ll := NewLinkedList(1)
+			require.Equal(t, 1, *ll.PopHead())
+			require.Nil(t, ll.PopHead())
+		})
+
+		t.Run("multiple elements", func(t *testing.T) {
+			ll := NewLinkedList(1, 2)
+			require.Equal(t, 1, *ll.PopHead())
+			require.Equal(t, 2, *ll.PopHead())
+			require.Nil(t, ll.PopHead())
+		})
+	})
+
 	t.Run("PushHead", func(t *testing.T) {
 		t.Run("zero items", func(t *testing.T) {
 			ll := NewLinkedList[int]()
@@ -75,6 +115,30 @@ func TestLinkedList(t *testing.T) {
 			ll.PushHead(2)
 			ll.PushHead(3)
 			require.True(t, equivalent(t, ll, []int{3, 2, 1}))
+		})
+	})
+
+	t.Run("SetCurrent", func(t *testing.T) {
+		t.Run("set head", func(t *testing.T) {
+			ll := NewLinkedList(1, 2, 3)
+			cursor := ll.CursorHead()
+			cursor.SetCurrent(4)
+			require.True(t, equivalent(t, ll, []int{4, 2, 3}))
+		})
+
+		t.Run("set tail", func(t *testing.T) {
+			ll := NewLinkedList(1, 2, 3)
+			cursor := ll.CursorTail()
+			cursor.SetCurrent(4)
+			require.True(t, equivalent(t, ll, []int{1, 2, 4}))
+		})
+
+		t.Run("set mid", func(t *testing.T) {
+			ll := NewLinkedList(1, 2, 3)
+			cursor := ll.CursorHead()
+			cursor.Next()
+			cursor.SetCurrent(4)
+			require.True(t, equivalent(t, ll, []int{1, 4, 3}))
 		})
 	})
 
